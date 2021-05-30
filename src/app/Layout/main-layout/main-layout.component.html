@@ -1,0 +1,44 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" [routerLink]="['/Home']">Online Store</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item my-1">
+          <a class="nav-link" [routerLink]="['/Home']" routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item active">
+          <div class="input-group my-1">
+            <input type="text" maxlength="100" class="form-control" placeholder="Search Product"
+              (keyup)="$event.keyCode == 13 ? callMethod() : clearValid()" [(ngModel)]="textSearch"
+              aria-label="Recipient's username" aria-describedby="basic-addon2"
+              [ngClass]="{'validateError': valid === 'Error','validateNotError':valid === 'noError'}" />
+            <div class="input-group-append">
+              <button class="btn btn-secondary" (click)="callMethod()" type="button">
+                Search
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+  <div class="container">
+    <p class="m-0 text-center text-white">Copyright &copy; Online Store 2021</p>
+  </div>
+  <!-- /.container -->
+</footer>
